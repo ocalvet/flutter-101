@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class HelloText extends StatelessWidget {
+  HelloText({ this.text });
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 10.0,
-      child: Text('Hello'),
+      child: Text(this.text),
     );
   }
 }
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
           title: Text('Welcome to Flutter'),
         ),
         body: Center(
-          child: HelloText(),
+          child: HelloText(
+            text: 'Whatawhata'
+          ),
         ),
       ),
     );
