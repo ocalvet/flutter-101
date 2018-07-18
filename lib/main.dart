@@ -8,8 +8,13 @@ class HelloText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 10.0,
-      child: Text(this.text),
+      height: 40.0,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 0, 255, 0)
+        ),
+        child: Text(this.text)
+      )
     );
   }
 }
@@ -23,11 +28,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Welcome to Flutter'),
         ),
-        body: Center(
-          child: HelloText(
-            text: 'Whatawhata'
-          ),
-        ),
+        body: HelloText(text: 'Hello there')
       ),
     );
   }
