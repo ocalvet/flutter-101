@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_101/Post.dart';
+import 'package:flutter_101/SecondScreen.dart';
 import 'HelloText.dart';
 import 'package:http/http.dart' as http;
 
@@ -30,22 +31,31 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text('Testing flutter'),
           ),
-          body: Center(
-            child: FutureBuilder<Post>(
-              future: fetchPost(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data.title);
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-
-                // By default, show a loading spinner
-                return CircularProgressIndicator();
-              },
-            ),
+          body: Column(children: <Widget>[
+              FutureBuilder<Post>(
+                future: fetchPost(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Text(snapshot.data.title);
+                  } else if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  }
+                  // By default, show a loading spinner
+                  return CircularProgressIndicator();
+                },
+              ),
+              RaisedButton(
+                child: Text('Launch screen'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondScreen()),
+                  );
+                },
+              ),
+            ],
+            )
           )
-        )
-      );
+        );
   }
 }
