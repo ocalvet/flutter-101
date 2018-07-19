@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Tester',
-      home: Scaffold(
+      home: Builder(
+        builder: (context) => Scaffold(
           appBar: AppBar(
             title: Text('Testing flutter'),
           ),
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
             ],
             )
           )
-        );
+      )
+      );
   }
 }
