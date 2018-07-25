@@ -1,6 +1,6 @@
-# flutter_101
+# flutter 101
 
-A new Flutter project.
+A new Flutter project to help learn google's flutter framework
 
 ## Getting Started
 
