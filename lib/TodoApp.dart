@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_101/Todo.dart';
+import 'package:flutter_101/TodoForm.dart';
 import 'package:flutter_101/TodoList.dart';
 class TodoApp extends StatefulWidget {
   @override
@@ -7,10 +9,10 @@ class TodoApp extends StatefulWidget {
   }
 }
 class _TodoApp extends State<TodoApp> {
-  int _counter = 0;
-  incrementCounter() {
+  List<Todo> todos = [];
+  addTodo(Todo todo) {
     this.setState(() {
-      this._counter ++;
+      this.todos.add(todo);
     });
   }
   @override
@@ -23,8 +25,9 @@ class _TodoApp extends State<TodoApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text('Counter: ' + this._counter.toString()),
-            RaisedButton(onPressed: incrementCounter, child: Text('Increment')),
+            TodoForm(
+              onAddTodo: addTodo
+            ),
             TodoList(),
           ],
         )
