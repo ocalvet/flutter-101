@@ -8,7 +8,7 @@ class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> todoItems = this.todos.map((todo) {
-      return TodoItem();
+      return TodoItem(todo: todo);
     }).toList();
     return Container(
       child: Column(
