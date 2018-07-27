@@ -14,7 +14,11 @@ class TodoList extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text('Todo List ' + this.todos.length.toString()),
-          Column(children: todoItems)
+          new ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(20.0),
+            children: todoItems
+          )
         ]
       )
     );
