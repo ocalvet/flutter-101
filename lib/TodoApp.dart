@@ -10,9 +10,10 @@ class TodoApp extends StatefulWidget {
 }
 class _TodoApp extends State<TodoApp> {
   List<Todo> todos = [];
-  addTodo(Todo todo) {
+  addTodo(String todoTitle) {
+    print("Adding todo $todoTitle");
     this.setState(() {
-      this.todos.add(todo);
+      this.todos.add(Todo(title: todoTitle, completed: false));
     });
   }
   @override
