@@ -29,7 +29,7 @@ class _TodoApp extends State<TodoApp> {
             TodoForm(
               onAddTodo: addTodo
             ),
-            TodoList(),
+            TodoList(todos: this.todos),
           ],
         )
       )
