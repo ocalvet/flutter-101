@@ -11,7 +11,6 @@ class TodoApp extends StatefulWidget {
 class _TodoApp extends State<TodoApp> {
   List<Todo> todos = [];
   addTodo(String todoTitle) {
-    print("Adding todo $todoTitle");
     this.setState(() {
       this.todos.add(Todo(title: todoTitle, completed: false));
     });
@@ -30,13 +29,16 @@ class _TodoApp extends State<TodoApp> {
         appBar: AppBar(
             title: Text('wHeReMyTOdoS'),
         ),
-        body: Column(
+        body: Container(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
           children: <Widget>[
             TodoForm(
               onAddTodo: addTodo
             ),
             TodoList(todos: this.todos, onCompleted: this.markComplete),
           ],
+        )
         )
       )
     );

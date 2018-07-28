@@ -14,10 +14,8 @@ class TodoList extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Text('Todo List (${this.todos.length.toString()})'),
           new ListView(
             shrinkWrap: true,
-            padding: const EdgeInsets.all(20.0),
             children: todoItems
           )
         ]
