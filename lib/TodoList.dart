@@ -9,12 +9,12 @@ class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> todoItems = this.todos.map((todo) {
-      return TodoItem(todo: todo);
+      return TodoItem(todo: todo, markCompleted: this.onCompleted);
     }).toList();
     return Container(
       child: Column(
         children: <Widget>[
-          Text('Todo List ' + this.todos.length.toString()),
+          Text('Todo List (${this.todos.length.toString()})'),
           new ListView(
             shrinkWrap: true,
             padding: const EdgeInsets.all(20.0),

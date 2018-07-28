@@ -17,6 +17,7 @@ class _TodoApp extends State<TodoApp> {
     });
   }
   markComplete(Todo todo) {
+    print("Completing todo " + todo.completed.toString());
     this.setState(() {
       todo.completed = !todo.completed;
     });
