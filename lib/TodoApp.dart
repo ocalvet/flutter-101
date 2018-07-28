@@ -16,6 +16,11 @@ class _TodoApp extends State<TodoApp> {
       this.todos.add(Todo(title: todoTitle, completed: false));
     });
   }
+  markComplete(Todo todo) {
+    this.setState(() {
+      todo.completed = !todo.completed;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +34,7 @@ class _TodoApp extends State<TodoApp> {
             TodoForm(
               onAddTodo: addTodo
             ),
-            TodoList(todos: this.todos),
+            TodoList(todos: this.todos, onCompleted: this.markComplete),
           ],
         )
       )
