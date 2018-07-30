@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_101/Filter.dart';
 import 'package:flutter_101/Todo.dart';
 import 'package:flutter_101/TodoForm.dart';
 import 'package:flutter_101/TodoList.dart';
@@ -21,6 +22,11 @@ class _TodoApp extends State<TodoApp> {
       todo.completed = !todo.completed;
     });
   }
+  
+  filterTodos(bool filter) {
+    print("Filtering todos");
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,6 +39,9 @@ class _TodoApp extends State<TodoApp> {
           padding: EdgeInsets.all(20.0),
           child: Column(
           children: <Widget>[
+            Filter(
+              onFilterTodos: filterTodos
+            ),
             TodoForm(
               onAddTodo: addTodo
             ),
