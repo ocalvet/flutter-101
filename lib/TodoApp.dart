@@ -11,23 +11,35 @@ class TodoApp extends StatefulWidget {
 }
 class _TodoApp extends State<TodoApp> {
   List<Todo> todos = [];
+  List<Todo> filteredTodos = [];
   bool filterCompletedTodos = true;
+  
+  updateFilteredTodos() {
+    filteredTodos = todos.where((todo) {
+      return !this.filterCompletedTodos || !todo.completed;
+    }).toList();
+  }
+
   addTodo(String todoTitle) {
     this.setState(() {
       this.todos.add(Todo(title: todoTitle, completed: false));
+      updateFilteredTodos();
     });
   }
   markComplete(Todo todo) {
     print("Completing todo " + todo.completed.toString());
     this.setState(() {
       todo.completed = !todo.completed;
+      updateFilteredTodos();
     });
   }
   
   filterTodos(bool filter) {
     print("Filtering todos " + this.filterCompletedTodos.toString());
     this.setState(() {
+      // Set current filtering
       this.filterCompletedTodos = !this.filterCompletedTodos;
+      updateFilteredTodos();
     });
   }
 
@@ -50,7 +62,7 @@ class _TodoApp extends State<TodoApp> {
             TodoForm(
               onAddTodo: addTodo
             ),
-            TodoList(todos: this.todos, onCompleted: this.markComplete),
+            TodoList(todos: this.filteredTodos, onCompleted: this.markComplete),
           ],
         )
         )
