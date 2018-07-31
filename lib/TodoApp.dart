@@ -11,6 +11,7 @@ class TodoApp extends StatefulWidget {
 }
 class _TodoApp extends State<TodoApp> {
   List<Todo> todos = [];
+  bool filterCompletedTodos = true;
   addTodo(String todoTitle) {
     this.setState(() {
       this.todos.add(Todo(title: todoTitle, completed: false));
@@ -24,7 +25,10 @@ class _TodoApp extends State<TodoApp> {
   }
   
   filterTodos(bool filter) {
-    print("Filtering todos");
+    print("Filtering todos " + this.filterCompletedTodos.toString());
+    this.setState(() {
+      this.filterCompletedTodos = !this.filterCompletedTodos;
+    });
   }
 
   @override
@@ -40,7 +44,8 @@ class _TodoApp extends State<TodoApp> {
           child: Column(
           children: <Widget>[
             Filter(
-              onFilterTodos: filterTodos
+              onFilterTodos: filterTodos,
+              filterTodos: this.filterCompletedTodos,
             ),
             TodoForm(
               onAddTodo: addTodo

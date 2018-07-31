@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Filter extends StatelessWidget {
-  Filter({this.onFilterTodos});
+  Filter({this.onFilterTodos, this.filterTodos});
   final Function onFilterTodos;
+  final bool filterTodos;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +14,7 @@ class Filter extends StatelessWidget {
               Text("Filter Completed"),
               Switch(
                   onChanged: this.onFilterTodos,
-                  value: true,
+                  value: this.filterTodos, 
                 )
             ]
           )
